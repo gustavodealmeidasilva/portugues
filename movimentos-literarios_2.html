@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estante Literária — Romantismo, Realismo, Naturalismo e Parnasianismo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310;
+  --leather:#241a13;
+  --leather-2:#2f2118;
+  --paper:#e9e0c9;
+  --paper-2:#f2ead6;
+  --gold:#b8863b;
+  --gold-bright:#d9ab5c;
+  --romantismo:#8b2635;
+  --romantismo-soft:#f0d9d9;
+  --realismo:#3e5c6e;
+  --realismo-soft:#dbe4e8;
+  --naturalismo:#5c6b3e;
+  --naturalismo-soft:#e2e6d5;
+  --parnasianismo:#93672f;
+  --parnasianismo-soft:#ede1c8;
+  --ok:#3c6e47;
+  --bad:#a13d3d;
+  --shadow: 0 14px 34px rgba(0,0,0,.35);
+  --radius: 3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--leather);
+  background-image:
+    radial-gradient(ellipse at 20% -10%, rgba(217,171,92,.08), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px, transparent 1px, transparent 3px);
+  color:var(--paper);
+  font-family:'Source Serif 4', Georgia, serif;
+  line-height:1.6;
+}
+h1,h2,h3,h4{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:700;
+  margin:0 0 .4em 0;
+  letter-spacing:.2px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold-bright);
+  display:block;
+  margin-bottom:.5em;
+}
+a{color:var(--gold-bright);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:72px 0 40px;
+  text-align:center;
+  border-bottom:1px solid rgba(184,134,59,.25);
+}
+.hero h1{
+  font-size:clamp(2.1rem, 5vw, 3.4rem);
+  color:var(--paper-2);
+  max-width:820px;
+  margin:0 auto .3em;
+}
+.hero p.lead{
+  max-width:620px;
+  margin:0 auto;
+  color:#cdbfa1;
+  font-size:1.05rem;
+}
+.hero .sub-eyebrow{color:var(--gold-bright);}
+
+/* ---------- SHELF / SPINE NAV ---------- */
+.shelf{
+  margin:52px auto 0;
+  max-width:920px;
+  display:flex;
+  gap:14px;
+  padding:0 24px 26px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.spine{
+  --c: var(--gold);
+  position:relative;
+  border:none;
+  border-radius:6px 6px 3px 3px;
+  padding:26px 14px 20px;
+  width:150px;
+  min-height:230px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0) 30%),
+    var(--c);
+  color:#fff8ec;
+  box-shadow: 0 8px 0 rgba(0,0,0,.35), var(--shadow);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  transform:translateY(0);
+  transition: transform .22s ease, box-shadow .22s ease;
+  text-align:center;
+}
+.spine:hover, .spine:focus-visible{
+  transform:translateY(-14px);
+  box-shadow: 0 22px 0 rgba(0,0,0,.32), var(--shadow);
+  outline:2px solid var(--gold-bright);
+  outline-offset:3px;
+}
+.spine.active{
+  transform:translateY(-22px);
+  box-shadow: 0 30px 0 rgba(0,0,0,.30), var(--shadow);
+}
+.spine .spine-title{
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family:'Fraunces', serif;
+  font-weight:700;
+  font-size:1.18rem;
+  letter-spacing:.03em;
+  margin:8px 0;
+}
+.spine .spine-years{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.62rem;
+  letter-spacing:.1em;
+  opacity:.85;
+}
+.spine .spine-badge{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.6rem;
+  background:rgba(0,0,0,.28);
+  padding:3px 8px;
+  border-radius:20px;
+  letter-spacing:.05em;
+}
+#spine-romantismo{--c:var(--romantismo);}
+#spine-realismo{--c:var(--realismo);}
+#spine-naturalismo{--c:var(--naturalismo);}
+#spine-parnasianismo{--c:var(--parnasianismo);}
+
+/* ---------- CRAM BANNER (prova amanhã) ---------- */
+.cram-banner{
+  max-width:760px;
+  margin:44px auto 0;
+  padding:0 24px;
+}
+.cram-head{
+  background:linear-gradient(135deg, var(--romantismo), var(--parnasianismo));
+  border-radius:6px 6px 0 0;
+  padding:22px 26px 18px;
+  text-align:left;
+}
+.cram-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:rgba(0,0,0,.28);
+  color:#fff8ec;
+  padding:4px 10px;
+  border-radius:20px;
+  display:inline-block;
+}
+.cram-head h2{color:#fff8ec;font-size:1.5rem;margin:10px 0 8px;}
+.cram-head p{color:#fbe9e0;font-size:.92rem;margin:0;max-width:560px;}
+.cram-steps{
+  list-style:none;
+  counter-reset:cram;
+  margin:0;
+  padding:20px 26px;
+  background:rgba(233,224,201,.06);
+  border:1px solid rgba(184,134,59,.3);
+  border-top:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.cram-steps li{
+  counter-increment:cram;
+  position:relative;
+  padding-left:34px;
+  font-size:.92rem;
+  color:#e3d7ba;
+}
+.cram-steps li::before{
+  content:counter(cram);
+  position:absolute;left:0;top:0;
+  width:24px;height:24px;
+  background:var(--gold);
+  color:#fff8ec;
+  border-radius:50%;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.75rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.cram-steps li .t{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.66rem;
+  letter-spacing:.06em;
+  color:var(--gold-bright);
+  display:inline-block;
+  margin-right:6px;
+  border:1px solid rgba(184,134,59,.4);
+  padding:1px 6px;
+  border-radius:10px;
+}
+.cram-actions{
+  background:rgba(233,224,201,.06);
+  border:1px solid rgba(184,134,59,.3);
+  border-top:none;
+  border-radius:0 0 6px 6px;
+  padding:16px 26px 22px;
+  text-align:center;
+}
+.cram-btn{
+  display:inline-block;
+  background:var(--gold);
+  color:#fff8ec !important;
+  text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.8rem;
+  letter-spacing:.04em;
+  padding:11px 22px;
+  border-radius:22px;
+  transition:background .15s;
+}
+.cram-btn:hover{background:var(--gold-bright);}
+
+@media (max-width:640px){
+  .cram-banner{padding:0 16px;margin-top:28px;}
+  .cram-head{padding:18px 18px 14px;}
+  .cram-head h2{font-size:1.2rem;}
+  .cram-head p{font-size:.85rem;}
+  .cram-steps{padding:16px 18px;}
+  .cram-steps li{font-size:.85rem;padding-left:30px;}
+  .cram-actions{padding:14px 18px 18px;}
+  .cram-btn{width:100%;text-align:center;}
+}
+
+/* ---------- SCIENCE SECTION ---------- */
+.science{
+  background:var(--leather-2);
+  padding:64px 0;
+  border-bottom:1px solid rgba(184,134,59,.2);
+}
+.science h2{color:var(--paper-2);font-size:1.9rem;text-align:center;}
+.science > .wrap > p{max-width:680px;margin:0 auto 36px;text-align:center;color:#cdbfa1;}
+.sci-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+.sci-card{
+  background:rgba(233,224,201,.05);
+  border:1px solid rgba(184,134,59,.3);
+  border-radius:var(--radius);
+  padding:22px 20px;
+}
+.sci-card .num{font-family:'IBM Plex Mono',monospace;color:var(--gold-bright);font-size:.75rem;letter-spacing:.1em;}
+.sci-card h3{font-size:1.05rem;color:var(--paper-2);margin-top:6px;}
+.sci-card p{font-size:.92rem;color:#c9bc9e;margin:0;}
+.curve-box{margin-top:34px;background:rgba(233,224,201,.05);border:1px solid rgba(184,134,59,.3);border-radius:var(--radius);padding:24px;}
+.curve-box h4{color:var(--paper-2);font-size:1rem;margin-bottom:14px;}
+.curve{display:flex;align-items:flex-end;gap:10px;height:110px;}
+.curve .bar{flex:1;background:linear-gradient(180deg,var(--gold-bright),var(--gold));border-radius:3px 3px 0 0;position:relative;}
+.curve .bar span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:#b9ab8b;}
+.curve-caption{margin-top:34px;font-size:.85rem;color:#a99a7a;}
+
+/* ---------- MAIN CONTENT / MOVEMENT PANELS ---------- */
+main{background:var(--paper);color:var(--ink);}
+.panel{display:none;padding:60px 0 70px;}
+.panel.visible{display:block;}
+.panel-head{border-bottom:3px solid var(--accent, var(--gold));padding-bottom:22px;margin-bottom:34px;}
+.panel-head .eyebrow{color:var(--accent, var(--gold));}
+.panel-head h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ink);}
+.panel-head .years{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:#6b6046;}
+.context p{font-size:1.02rem;max-width:760px;}
+.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-top:30px;}
+@media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+.trait-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.trait-list li{
+  background:var(--paper-2);
+  border-left:4px solid var(--accent,var(--gold));
+  padding:11px 14px;
+  font-size:.95rem;
+  border-radius:0 3px 3px 0;
+}
+.authors-table{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--paper-2);}
+.authors-table caption{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#6b6046;margin-bottom:8px;}
+.authors-table th,.authors-table td{padding:9px 12px;border-bottom:1px solid #d8cba6;text-align:left;vertical-align:top;}
+.authors-table th{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#6b6046;}
+
+blockquote.excerpt{
+  border-left:4px solid var(--accent,var(--gold));
+  background:var(--paper-2);
+  margin:30px 0;
+  padding:20px 24px;
+  font-style:italic;
+  font-size:1.08rem;
+  position:relative;
+}
+blockquote.excerpt cite{display:block;margin-top:10px;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#6b6046;letter-spacing:.05em;}
+
+.section-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent,var(--gold));
+  margin:44px 0 14px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-label::after{content:"";flex:1;height:1px;background:#d8cba6;}
+
+/* flashcards */
+.flash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.flash{
+  perspective:1200px;
+  height:150px;
+}
+.flash-inner{
+  position:relative;width:100%;height:100%;
+  transition:transform .5s cubic-bezier(.4,.2,.2,1);
+  transform-style:preserve-3d;
+}
+.flash.flipped .flash-inner{transform:rotateY(180deg);}
+.flash-face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:.9rem;
+  cursor:pointer;
+  border:1px solid #d8cba6;
+}
+.flash-front{background:var(--paper-2);color:var(--ink);font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;}
+.flash-back{background:var(--accent,var(--gold));color:#fff8ec;transform:rotateY(180deg);}
+.flash-hint{font-family:'IBM Plex Mono',monospace;font-size:.6rem;opacity:.6;position:absolute;bottom:8px;right:10px;}
+
+/* quiz */
+.quiz-card{
+  background:var(--paper-2);
+  border:1px solid #d8cba6;
+  border-radius:var(--radius);
+  padding:22px 24px;
+  margin-bottom:16px;
+}
+.quiz-card .q{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin-bottom:14px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.opt-btn{
+  text-align:left;
+  background:#fff;
+  border:1px solid #d8cba6;
+  border-radius:var(--radius);
+  padding:10px 14px;
+  font-size:.92rem;
+  color:var(--ink);
+  transition:background .15s, border-color .15s;
+}
+.opt-btn:hover:not(:disabled){border-color:var(--accent,var(--gold));}
+.opt-btn.correct{background:#e2efe4;border-color:var(--ok);color:var(--ok);font-weight:600;}
+.opt-btn.wrong{background:#f5e2e2;border-color:var(--bad);color:var(--bad);}
+.opt-btn:disabled{cursor:default;}
+.explain{
+  margin-top:12px;font-size:.85rem;color:#5a5138;background:#fff;border-radius:3px;padding:10px 12px;
+  display:none;border-left:3px solid var(--accent,var(--gold));
+}
+.explain.show{display:block;}
+.quiz-summary{
+  margin-top:18px;padding:16px 20px;background:var(--ink);color:var(--paper-2);border-radius:var(--radius);
+  font-family:'IBM Plex Mono',monospace;font-size:.85rem;display:none;
+}
+.quiz-summary.show{display:block;}
+.retry-btn{
+  margin-top:14px;background:var(--accent,var(--gold));color:#fff8ec;border:none;padding:9px 18px;border-radius:20px;font-size:.82rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;display:none;
+}
+.retry-btn.show{display:inline-block;}
+
+/* comparativo */
+.compare-wrap{background:var(--leather);padding:64px 0;}
+.compare-wrap h2{color:var(--paper-2);text-align:center;font-size:1.9rem;}
+.compare-wrap > .wrap > p{text-align:center;color:#cdbfa1;max-width:600px;margin:0 auto 30px;}
+.compare-table-scroll{overflow-x:auto;}
+table.compare{width:100%;border-collapse:collapse;min-width:760px;background:rgba(233,224,201,.04);}
+table.compare th,table.compare td{padding:14px 16px;border:1px solid rgba(184,134,59,.25);vertical-align:top;font-size:.88rem;}
+table.compare th{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-bright);text-align:left;background:rgba(0,0,0,.2);}
+table.compare td.movement-name{font-family:'Fraunces',serif;font-weight:700;font-size:1rem;}
+tr.row-romantismo td.movement-name{color:#e69aa5;}
+tr.row-realismo td.movement-name{color:#9fc0d1;}
+tr.row-naturalismo td.movement-name{color:#b7c98f;}
+tr.row-parnasianismo td.movement-name{color:#e2b56e;}
+table.compare td,table.compare th{color:#ded2b3;}
+
+/* revisao mista */
+.review{background:var(--paper);color:var(--ink);padding:64px 0;}
+.review h2{text-align:center;font-size:1.9rem;}
+.review > .wrap > p.lead2{text-align:center;max-width:600px;margin:0 auto 30px;color:#5a5138;}
+.review-start{display:block;margin:0 auto 40px;background:var(--ink);color:var(--paper-2);border:none;padding:14px 30px;border-radius:24px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;letter-spacing:.06em;}
+#mixed-quiz-area{max-width:700px;margin:0 auto;}
+
+/* progresso */
+.progress-panel{background:var(--leather-2);padding:50px 0 60px;}
+.progress-panel h3{color:var(--paper-2);text-align:center;font-size:1.3rem;}
+.progress-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;max-width:900px;margin:26px auto 0;}
+.prog-card{background:rgba(233,224,201,.05);border:1px solid rgba(184,134,59,.3);border-radius:var(--radius);padding:16px 18px;text-align:center;}
+.prog-card .label{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.08em;color:#b9ab8b;text-transform:uppercase;}
+.prog-card .value{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--gold-bright);margin-top:6px;}
+.reset-row{text-align:center;margin-top:30px;}
+.reset-row button{background:transparent;border:1px solid rgba(184,134,59,.4);color:#cdbfa1;padding:8px 16px;border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;}
+
+footer.site-footer{background:var(--ink);color:#7d735b;text-align:center;padding:26px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.04em;}
+
+.jump-note{
+  text-align:center;color:#a99a7a;font-family:'IBM Plex Mono',monospace;font-size:.68rem;margin-top:6px;letter-spacing:.06em;
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important; scroll-behavior:auto !important;}
+}
+
+/* ---------- TABLE SCROLL WRAPPER (mobile) ---------- */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px;}
+.table-scroll .authors-table{min-width:520px;}
+
+/* ---------- MOBILE ---------- */
+@media (max-width:640px){
+  .wrap{padding:0 16px;}
+  .hero{padding:44px 0 28px;}
+  .hero h1{font-size:1.65rem;}
+  .hero p.lead{font-size:.92rem;padding:0 4px;}
+  .shelf{margin-top:32px;gap:10px;padding:0 16px 20px;}
+  .spine{width:76px;min-height:150px;padding:16px 8px 12px;border-radius:4px 4px 2px 2px;}
+  .spine .spine-title{font-size:.8rem;}
+  .spine .spine-years{font-size:.52rem;}
+  .spine .spine-badge{font-size:.5rem;padding:2px 6px;}
+  .spine:hover, .spine:focus-visible, .spine.active{transform:translateY(-6px);}
+
+  .science{padding:40px 0;}
+  .science h2{font-size:1.35rem;}
+  .sci-grid{grid-template-columns:1fr;gap:12px;}
+  .curve-box{padding:16px;}
+  .curve{gap:6px;height:90px;}
+  .curve .bar span{font-size:.52rem;bottom:-20px;}
+
+  .panel{padding:38px 0 46px;}
+  .panel-head h2{font-size:1.55rem;}
+  .panel-head{padding-bottom:16px;margin-bottom:22px;}
+  .context p{font-size:.95rem;}
+  .two-col{gap:24px;}
+  .section-label{margin:32px 0 12px;font-size:.62rem;}
+
+  .flash-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .flash{height:130px;}
+  .flash-face{padding:10px;font-size:.78rem;}
+  .flash-front{font-size:.86rem;}
+
+  .quiz-card{padding:16px;}
+  .quiz-card .q{font-size:.94rem;}
+  .opt-btn{font-size:.86rem;padding:9px 12px;}
+
+  .compare-wrap{padding:40px 0;}
+  .compare-wrap h2{font-size:1.35rem;}
+  table.compare{min-width:640px;}
+
+  .review{padding:40px 0;}
+  .review h2{font-size:1.35rem;}
+  .review-start{width:100%;padding:14px 20px;}
+
+  .progress-panel{padding:36px 0 44px;}
+  .progress-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .prog-card{padding:12px 10px;}
+  .prog-card .value{font-size:1.3rem;}
+
+  blockquote.excerpt{padding:14px 16px;font-size:.95rem;}
+}
+
+@media (max-width:380px){
+  .flash-grid{grid-template-columns:1fr;}
+  .progress-grid{grid-template-columns:1fr;}
+  .spine{width:68px;min-height:135px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow sub-eyebrow">Uma estante para estudar de verdade</span>
+    <h1>Romantismo, Realismo, Naturalismo e Parnasianismo</h1>
+    <p class="lead">Puxe um volume da estante. Cada movimento tem seu contexto, seus autores, flashcards para memorizar e um teste para você provar o que sabe — construído sobre técnicas de estudo com respaldo científico.</p>
+  </div>
+  <nav class="shelf" aria-label="Selecionar movimento literário">
+    <button class="spine" id="spine-romantismo" data-target="romantismo">
+      <span class="spine-badge" data-badge="romantismo">não estudado</span>
+      <span class="spine-title">Romantismo</span>
+      <span class="spine-years">1836 – 1881</span>
+    </button>
+    <button class="spine" id="spine-realismo" data-target="realismo">
+      <span class="spine-badge" data-badge="realismo">não estudado</span>
+      <span class="spine-title">Realismo</span>
+      <span class="spine-years">1881 – 1893</span>
+    </button>
+    <button class="spine" id="spine-naturalismo" data-target="naturalismo">
+      <span class="spine-badge" data-badge="naturalismo">não estudado</span>
+      <span class="spine-title">Naturalismo</span>
+      <span class="spine-years">1881 – 1893</span>
+    </button>
+    <button class="spine" id="spine-parnasianismo" data-target="parnasianismo">
+      <span class="spine-badge" data-badge="parnasianismo">não estudado</span>
+      <span class="spine-title">Parnasianismo</span>
+      <span class="spine-years">1882 – 1922</span>
+    </button>
+  </nav>
+  <p class="jump-note">clique em um livro para abrir o capítulo ↑</p>
+
+  <div class="cram-banner">
+    <div class="cram-head">
+      <span class="cram-tag">Prova amanhã de manhã</span>
+      <h2>Modo revisão relâmpago</h2>
+      <p>Esqueça repetição espaçada por hoje — o que rende mais em uma noite é <strong>recuperação ativa concentrada</strong> seguida de <strong>revisão misturada</strong>. Siga esta ordem:</p>
+    </div>
+    <ol class="cram-steps">
+      <li><span class="t">~15 min</span> Passe rápido pelo <strong>Contexto</strong> e pela tabela de autores dos 4 capítulos — não releia tudo, só refresque</li>
+      <li><span class="t">~20 min</span> Faça os <strong>flashcards</strong> de cada capítulo tentando lembrar antes de virar a carta</li>
+      <li><span class="t">~20 min</span> Faça o <strong>quiz dos 5</strong> de cada movimento uma vez — leia a explicação de todo erro</li>
+      <li><span class="t">~10 min</span> Leia o <strong>quadro comparativo</strong> em voz alta, focando em Realismo x Naturalismo (o que mais confunde)</li>
+      <li><span class="t">~10 min</span> Feche com a <strong>revisão geral misturada</strong> — é o mais parecido com a prova de amanhã</li>
+      <li><span class="t">amanhã</span> Antes de entrar na sala, refaça só a revisão misturada de novo — 5 minutos, fixa tudo por mais algumas horas</li>
+    </ol>
+    <div class="cram-actions">
+      <a href="#revisao-geral" class="cram-btn">Ir direto para a revisão misturada →</a>
+    </div>
+  </div>
+</header>
+
+<section class="science">
+  <div class="wrap">
+    <span class="eyebrow" style="text-align:center;display:block;">Antes de começar</span>
+    <h2>O melhor jeito de estudar, segundo a ciência</h2>
+    <p>Este site não foi feito só para ler — foi desenhado em cima de quatro achados robustos da psicologia cognitiva sobre como a memória de longo prazo realmente funciona.</p>
+    <div class="sci-grid">
+      <div class="sci-card">
+        <span class="num">01</span>
+        <h3>Recuperação ativa</h3>
+        <p>Tentar <em>lembrar</em> de algo fortalece a memória muito mais do que reler. Por isso cada capítulo tem flashcards e quiz: você é obrigado a buscar a resposta antes de vê-la.</p>
+      </div>
+      <div class="sci-card">
+        <span class="num">02</span>
+        <h3>Repetição espaçada</h3>
+        <p>Reveja o conteúdo em intervalos crescentes — hoje, daqui a 2 dias, daqui a uma semana — em vez de tudo de uma vez. Seu progresso fica salvo aqui, então volte depois de "esquecer" um pouco.</p>
+      </div>
+      <div class="sci-card">
+        <span class="num">03</span>
+        <h3>Intercalação</h3>
+        <p>Misturar os temas (em vez de estudar um bloco fechado por vez) treina o cérebro a <em>reconhecer</em> qual movimento é qual — que é exatamente o que uma prova cobra. Por isso há uma revisão geral misturada no fim.</p>
+      </div>
+      <div class="sci-card">
+        <span class="num">04</span>
+        <h3>Elaboração</h3>
+        <p>Perguntar "por quê" e "como isso se conecta" cria mais vínculos na memória do que decorar fatos soltos. O quadro comparativo existe para forçar essas conexões entre os quatro movimentos.</p>
+      </div>
+    </div>
+    <div class="curve-box">
+      <h4>Por que revisar importa: a curva do esquecimento (Ebbinghaus)</h4>
+      <div class="curve">
+        <div class="bar" style="height:100%"><span>Dia 0<br>100%</span></div>
+        <div class="bar" style="height:44%"><span>Dia 1<br>~44%</span></div>
+        <div class="bar" style="height:33%"><span>Dia 2<br>~33%</span></div>
+        <div class="bar" style="height:25%"><span>Dia 6<br>~25%</span></div>
+        <div class="bar" style="height:21%"><span>Dia 31<br>~21%</span></div>
+      </div>
+      <p class="curve-caption" style="margin-top:36px;">Sem revisão, a maior parte do que lemos some em poucos dias. Cada revisão "achata" a curva seguinte — é por isso que refazer o quiz misto depois de alguns dias vale mais do que reler o capítulo uma segunda vez agora.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <!-- ROMANTISMO -->
+  <section class="panel" id="panel-romantismo" style="--accent:var(--romantismo)" data-key="romantismo">
+    <div class="wrap">
+      <div class="panel-head">
+        <span class="eyebrow">Capítulo I</span>
+        <h2>Romantismo</h2>
+        <span class="years">Brasil, 1836 (publicação de <em>Suspiros poéticos e saudades</em>) — 1881 (véspera do Realismo)</span>
+      </div>
+
+      <div class="context">
+        <p>O Romantismo nasce junto com a construção da identidade do Brasil recém-independente (1822). Sem um passado clássico próprio para reivindicar, os escritores inventam um: o índio vira cavaleiro medieval, a mata vira castelo, e a natureza tropical vira prova de que o Brasil também tem grandeza. É uma literatura movida pelo coração — subjetiva, exagerada, apaixonada — e costuma ser dividida em três gerações que foram mudando de humor ao longo das décadas.</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <div class="section-label">Três gerações, três temperamentos</div>
+          <ul class="trait-list">
+            <li><strong>1ª geração — Nacionalista/Indianista:</strong> exalta a pátria e o índio como herói fundador. Otimista, épica, cheia de orgulho nacional.</li>
+            <li><strong>2ª geração — "Mal do século" / Byroniana:</strong> tédio, angústia existencial, amor impossível e fascínio pela morte. Influência do poeta inglês Lord Byron.</li>
+            <li><strong>3ª geração — Condoreira / Social:</strong> poesia-discurso, engajada, de forte tom abolicionista, sob influência de Victor Hugo.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-label">Características gerais</div>
+          <ul class="trait-list">
+            <li>Subjetivismo e egocentrismo ("eu" no centro de tudo)</li>
+            <li>Idealização da mulher, da natureza e do índio</li>
+            <li>Nacionalismo e escapismo (fuga da realidade)</li>
+            <li>Linguagem mais simples que o Arcadismo/Barroco anteriores</li>
+            <li>Gosto pelo fantástico, pelo noturno, pelo sobrenatural</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-label">Autores e obras que caem em prova</div>
+      <div class="table-scroll"><table class="authors-table">
+        <caption>Guarde pelo menos um autor de cada geração</caption>
+        <thead><tr><th>Autor</th><th>Geração</th><th>Obras-chave</th></tr></thead>
+        <tbody>
+          <tr><td>Gonçalves Dias</td><td>1ª — Indianista</td><td>"Canção do Exílio", <em>I-Juca Pirama</em></td></tr>
+          <tr><td>José de Alencar</td><td>1ª — Indianista (prosa)</td><td><em>Iracema</em>, <em>O Guarani</em>, <em>Senhora</em></td></tr>
+          <tr><td>Álvares de Azevedo</td><td>2ª — Ultrarromântica</td><td><em>Lira dos Vinte Anos</em>, <em>Noite na Taverna</em></td></tr>
+          <tr><td>Casimiro de Abreu</td><td>2ª — Ultrarromântica</td><td>"Meus Oito Anos"</td></tr>
+          <tr><td>Castro Alves</td><td>3ª — Condoreira</td><td>"O Navio Negreiro", <em>Os Escravos</em></td></tr>
+        </tbody>
+      </table></div>
+
+      <blockquote class="excerpt">
+        "Minha terra tem palmeiras, / Onde canta o Sabiá; / As aves, que aqui gorjeiam, / Não gorjeiam como lá."
+        <cite>Gonçalves Dias, "Canção do Exílio" (1843) — o poema mais citado do nacionalismo romântico</cite>
+      </blockquote>
+
+      <div class="section-label">Recuperação ativa — flashcards</div>
+      <div class="flash-grid" data-flash="romantismo"></div>
+
+      <div class="section-label">Teste seu conhecimento</div>
+      <div class="quiz-area" data-quiz="romantismo"></div>
+    </div>
+  </section>
+
+  <!-- REALISMO -->
+  <section class="panel" id="panel-realismo" style="--accent:var(--realismo)" data-key="realismo">
+    <div class="wrap">
+      <div class="panel-head">
+        <span class="eyebrow">Capítulo II</span>
+        <h2>Realismo</h2>
+        <span class="years">Brasil, 1881 — marco: <em>Memórias Póstumas de Brás Cubas</em>, de Machado de Assis</span>
+      </div>
+
+      <div class="context">
+        <p>Depois de décadas de idealização romântica, o Realismo vira as costas para o sentimentalismo e passa a olhar o Brasil com distância crítica: a hipocrisia da burguesia urbana, os interesses por trás do casamento, as ambições disfarçadas de virtude. É uma literatura de observação fria — quase clínica — do comportamento humano, quase sempre sob a pena irônica de Machado de Assis, o maior nome do período.</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <div class="section-label">O que muda em relação ao Romantismo</div>
+          <ul class="trait-list">
+            <li>Objetividade no lugar do sentimentalismo</li>
+            <li>Verossimilhança: personagens complexos, nada de heróis perfeitos</li>
+            <li>Crítica social e análise psicológica das personagens</li>
+            <li>Ironia e humor fino como ferramentas de crítica</li>
+            <li>Machado inventa o "narrador defunto-autor": em <em>Brás Cubas</em>, quem narra já está morto — e por isso pode falar sem filtro sobre a hipocrisia da sociedade que retrata</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-label">Temas recorrentes</div>
+          <ul class="trait-list">
+            <li>Triângulo amoroso e adultério na burguesia urbana</li>
+            <li>Casamento por interesse, escondido sob discurso romântico</li>
+            <li>Ciúme, ambiguidade moral e dúvida sobre a "verdade" dos fatos</li>
+            <li>Metalinguagem: o narrador comenta o próprio ato de narrar</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-label">Autores e obras que caem em prova</div>
+      <div class="table-scroll"><table class="authors-table">
+        <caption>Machado domina o período, mas Raul Pompeia também é cobrado</caption>
+        <thead><tr><th>Autor</th><th>Obra</th><th>Por que importa</th></tr></thead>
+        <tbody>
+          <tr><td>Machado de Assis</td><td><em>Memórias Póstumas de Brás Cubas</em> (1881)</td><td>Marco inicial; narrador morto, ironia, metalinguagem</td></tr>
+          <tr><td>Machado de Assis</td><td><em>Dom Casmurro</em> (1899)</td><td>A dúvida sobre a traição de Capitu — o maior enigma da literatura brasileira</td></tr>
+          <tr><td>Machado de Assis</td><td><em>Quincas Borba</em> (1891)</td><td>Crítica à filosofia do "Humanitismo" (paródia do darwinismo social)</td></tr>
+          <tr><td>Raul Pompeia</td><td><em>O Ateneu</em> (1888)</td><td>Romance de memórias sobre um colégio interno; narrador adulto relendo a própria infância com desilusão</td></tr>
+        </tbody>
+      </table></div>
+
+      <blockquote class="excerpt">
+        "Ao verme que primeiro roeu as frias carnes do meu cadáver dedico como saudosa lembrança estas Memórias Póstumas."
+        <cite>Machado de Assis — dedicatória de <em>Memórias Póstumas de Brás Cubas</em>, já anunciando o narrador defunto</cite>
+      </blockquote>
+
+      <div class="section-label">Recuperação ativa — flashcards</div>
+      <div class="flash-grid" data-flash="realismo"></div>
+
+      <div class="section-label">Teste seu conhecimento</div>
+      <div class="quiz-area" data-quiz="realismo"></div>
+    </div>
+  </section>
+
+  <!-- NATURALISMO -->
+  <section class="panel" id="panel-naturalismo" style="--accent:var(--naturalismo)" data-key="naturalismo">
+    <div class="wrap">
+      <div class="panel-head">
+        <span class="eyebrow">Capítulo III</span>
+        <h2>Naturalismo</h2>
+        <span class="years">Brasil, anos 1880–1890 — corre em paralelo ao Realismo, mas com outra lente</span>
+      </div>
+
+      <div class="context">
+        <p>Se o Realismo olha para a psicologia e a hipocrisia social, o Naturalismo radicaliza a proposta: trata o ser humano quase como objeto de laboratório, moldado por forças que ele não controla — biologia, ambiente, herança, instinto. É a literatura mais influenciada pela ciência do século XIX: o positivismo de Auguste Comte, o determinismo de Hippolyte Taine (raça, meio e momento) e o evolucionismo de Darwin.</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <div class="section-label">Características</div>
+          <ul class="trait-list">
+            <li>Determinismo: o indivíduo é produto do meio, da raça e do momento histórico</li>
+            <li>Zoomorfismo: personagens comparados a animais, reforçando o lado instintivo</li>
+            <li>Foco em "patologias sociais" — alcoolismo, prostituição, loucura, promiscuidade</li>
+            <li>Personagem coletivo: o ambiente (um cortiço, um bairro) age quase como um organismo vivo</li>
+            <li>Influência direta do francês Émile Zola e do "romance experimental"</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-label">Naturalismo x Realismo — a diferença que confunde todo mundo</div>
+          <ul class="trait-list">
+            <li><strong>Realismo:</strong> foco na burguesia, no interior psicológico, na ironia e no comportamento social</li>
+            <li><strong>Naturalismo:</strong> foco nas classes populares, no corpo, no instinto e nas "leis" biológicas que supostamente explicam o comportamento humano</li>
+            <li>Na prática, os dois nascem juntos e às vezes se misturam — mas em prova, "determinismo" e "zoomorfismo" são naturalismo puro</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-label">Autor e obra que caem em prova</div>
+      <div class="table-scroll"><table class="authors-table">
+        <caption>Aluísio Azevedo é praticamente sinônimo do movimento no Brasil</caption>
+        <thead><tr><th>Autor</th><th>Obra</th><th>Por que importa</th></tr></thead>
+        <tbody>
+          <tr><td>Aluísio Azevedo</td><td><em>O Cortiço</em> (1890)</td><td>Obra máxima do Naturalismo brasileiro; o cortiço "São Romão" funciona como personagem coletivo</td></tr>
+          <tr><td>Aluísio Azevedo</td><td><em>O Mulato</em> (1881)</td><td>Considerado o marco inicial do Naturalismo no Brasil; denuncia o racismo na sociedade maranhense</td></tr>
+        </tbody>
+      </table></div>
+
+      <blockquote class="excerpt">
+        "Aquele cortiço era, de fato, uma cidade à parte, um mundo à parte, formigando, fervendo à flor da terra, à flor daquele terreno alagadiço e escuro."
+        <cite>Aluísio Azevedo, <em>O Cortiço</em> — o coletivo como verdadeiro protagonista</cite>
+      </blockquote>
+
+      <div class="section-label">Recuperação ativa — flashcards</div>
+      <div class="flash-grid" data-flash="naturalismo"></div>
+
+      <div class="section-label">Teste seu conhecimento</div>
+      <div class="quiz-area" data-quiz="naturalismo"></div>
+    </div>
+  </section>
+
+  <!-- PARNASIANISMO -->
+  <section class="panel" id="panel-parnasianismo" style="--accent:var(--parnasianismo)" data-key="parnasianismo">
+    <div class="wrap">
+      <div class="panel-head">
+        <span class="eyebrow">Capítulo IV</span>
+        <h2>Parnasianismo</h2>
+        <span class="years">Brasil, 1882 (<em>Fanfarras</em>, de Teófilo Dias) até aproximadamente 1922</span>
+      </div>
+
+      <div class="context">
+        <p>Enquanto a prosa segue em direção ao Realismo e ao Naturalismo, a poesia toma outro caminho: o Parnasianismo reage contra o "excesso de sentimento" romântico e propõe uma poesia fria, precisa e tecnicamente perfeita. O nome vem do Monte Parnaso, morada mitológica das musas — e o lema é "arte pela arte": a forma do poema importa mais do que a emoção que ele carrega.</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <div class="section-label">Características</div>
+          <ul class="trait-list">
+            <li>"Arte pela arte": a poesia não precisa ter função moral, social ou sentimental</li>
+            <li>Impassibilidade: o poeta se mantém distante e objetivo diante do tema, ao contrário do "eu" romântico</li>
+            <li>Culto à forma fixa, especialmente o soneto, com métrica e rima rigorosas</li>
+            <li>Vocabulário rebuscado e erudito</li>
+            <li>Preferência por temas da mitologia greco-romana e por descrições plásticas (esculturas, objetos de arte, paisagens)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-label">A tríade parnasiana</div>
+          <ul class="trait-list">
+            <li><strong>Olavo Bilac</strong> — o mais famoso; ficou conhecido como "príncipe dos poetas brasileiros"</li>
+            <li><strong>Alberto de Oliveira</strong> — mestre da descrição minuciosa e do detalhe visual</li>
+            <li><strong>Raimundo Correia</strong> — poesia mais melancólica dentro do rigor formal</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-label">A obra-manifesto</div>
+      <div class="table-scroll"><table class="authors-table">
+        <caption>"Profissão de Fé" resume o programa parnasiano em um único poema</caption>
+        <thead><tr><th>Autor</th><th>Obra</th><th>Por que importa</th></tr></thead>
+        <tbody>
+          <tr><td>Olavo Bilac</td><td>"Profissão de Fé" (em <em>Poesias</em>, 1888)</td><td>Compara o poeta a um ourives que lapida o verso como se lapidasse ouro — o manifesto estético do movimento</td></tr>
+          <tr><td>Alberto de Oliveira</td><td><em>Meridionais</em> (1884)</td><td>Poesia descritiva, "plástica", quase escultórica</td></tr>
+          <tr><td>Raimundo Correia</td><td>"As Pombas"</td><td>Um dos poemas parnasianos mais lidos em sala de aula</td></tr>
+        </tbody>
+      </table></div>
+
+      <blockquote class="excerpt">
+        "Longe do estéril turbilhão da rua, / Beneditino, escreve! No aconchego / Do claustro, na paciência e no sossego, / Trabalha, e teima, e lima, e sofre, e sua!"
+        <cite>Olavo Bilac, "Profissão de Fé" — o poeta como artesão da palavra</cite>
+      </blockquote>
+
+      <div class="section-label">Recuperação ativa — flashcards</div>
+      <div class="flash-grid" data-flash="parnasianismo"></div>
+
+      <div class="section-label">Teste seu conhecimento</div>
+      <div class="quiz-area" data-quiz="parnasianismo"></div>
+    </div>
+  </section>
+</main>
+
+<section class="compare-wrap">
+  <div class="wrap">
+    <span class="eyebrow" style="text-align:center;display:block;">Elaboração</span>
+    <h2>Os quatro movimentos, lado a lado</h2>
+    <p>Conectar os movimentos entre si é o que realmente fixa o conteúdo. Use este quadro para revisar antes de qualquer prova.</p>
+    <div class="compare-table-scroll">
+      <table class="compare">
+        <thead>
+          <tr><th>Movimento</th><th>Período</th><th>Foco central</th><th>Estilo</th><th>Autores-chave</th><th>Obras-chave</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-romantismo">
+            <td class="movement-name">Romantismo</td>
+            <td>1836–1881</td>
+            <td>Subjetividade, sentimento, nação</td>
+            <td>Idealização, nacionalismo, escapismo</td>
+            <td>Gonçalves Dias, José de Alencar, Castro Alves</td>
+            <td><em>Iracema</em>, "Canção do Exílio", "O Navio Negreiro"</td>
+          </tr>
+          <tr class="row-realismo">
+            <td class="movement-name">Realismo</td>
+            <td>1881–1893*</td>
+            <td>Crítica social e psicológica</td>
+            <td>Objetividade, verossimilhança, ironia</td>
+            <td>Machado de Assis, Raul Pompeia</td>
+            <td><em>Brás Cubas</em>, <em>Dom Casmurro</em>, <em>O Ateneu</em></td>
+          </tr>
+          <tr class="row-naturalismo">
+            <td class="movement-name">Naturalismo</td>
+            <td>1881–1893* (paralelo)</td>
+            <td>Determinismo biológico e social</td>
+            <td>Cientificismo, zoomorfismo, patologia</td>
+            <td>Aluísio Azevedo</td>
+            <td><em>O Cortiço</em>, <em>O Mulato</em></td>
+          </tr>
+          <tr class="row-parnasianismo">
+            <td class="movement-name">Parnasianismo</td>
+            <td>1882–1922*</td>
+            <td>Perfeição formal ("arte pela arte")</td>
+            <td>Objetividade descritiva, impassibilidade</td>
+            <td>Olavo Bilac, Alberto de Oliveira, Raimundo Correia</td>
+            <td>"Profissão de Fé", <em>Poesias</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.72rem;color:#a99a7a;margin-top:14px;">*datas aproximadas — a crítica não fecha um consenso exato sobre o fim de cada período.</p>
+  </div>
+</section>
+
+<section class="review" id="revisao-geral">
+  <div class="wrap">
+    <span class="eyebrow" style="text-align:center;display:block;color:var(--gold);">Intercalação</span>
+    <h2>Revisão geral (misturada de propósito)</h2>
+    <p class="lead2">Estas 10 perguntas embaralham os quatro movimentos — exatamente como cai numa prova de verdade. Se você acertar a maioria, seu conhecimento está consolidado, não só decorado.</p>
+    <button class="review-start" id="start-mixed">Começar revisão geral</button>
+    <div id="mixed-quiz-area"></div>
+  </div>
+</section>
+
+<section class="progress-panel">
+  <div class="wrap">
+    <h3>Seu progresso nesta estante</h3>
+    <div class="progress-grid" id="progress-grid"></div>
+    <div class="reset-row">
+      <button id="reset-progress">Zerar progresso salvo</button>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  Estante Literária · Romantismo · Realismo · Naturalismo · Parnasianismo · feito para revisar hoje, daqui a 2 dias e daqui a 1 semana
+</footer>
+
+<script>
+(function(){
+
+const MOVEMENTS = ['romantismo','realismo','naturalismo','parnasianismo'];
+const LABELS = {romantismo:'Romantismo', realismo:'Realismo', naturalismo:'Naturalismo', parnasianismo:'Parnasianismo'};
+
+/* ---------------- FLASHCARD DATA ---------------- */
+const FLASHCARDS = {
+  romantismo:[
+    ['Sentimentalismo','Valorização extrema dos sentimentos e emoções em detrimento da razão.'],
+    ['Nacionalismo romântico','Exaltação da pátria, da natureza e do povo brasileiro — o índio vira símbolo nacional.'],
+    ['"Mal do século"','Apelido da 2ª geração: angústia existencial, tédio, morte, pessimismo (Álvares de Azevedo).'],
+    ['Condoreirismo','3ª geração romântica: poesia social e abolicionista, sob influência de Victor Hugo — Castro Alves é o nome principal.'],
+    ['Indianismo','Idealização do indígena como herói nacional, quase um cavaleiro medieval transposto para o Brasil.'],
+    ['Escapismo','Fuga da realidade presente rumo ao passado idealizado, à natureza ou à morte.']
+  ],
+  realismo:[
+    ['Verossimilhança','Efeito de verdade: a narrativa parece real e crível, sem idealizações românticas.'],
+    ['Narrador defunto-autor','Recurso de Machado em Brás Cubas: um morto narra a própria vida com ironia e liberdade total.'],
+    ['Triângulo amoroso burguês','Tema recorrente: adultério e hipocrisia nas relações matrimoniais da burguesia urbana.'],
+    ['Metalinguagem machadiana','O narrador comenta o próprio ato de narrar e dialoga diretamente com o leitor.'],
+    ['Análise psicológica','Foco no interior das personagens — motivações, contradições e ambiguidades morais.']
+  ],
+  naturalismo:[
+    ['Determinismo','Teoria de Taine: o indivíduo é moldado por raça, meio e momento histórico.'],
+    ['Zoomorfismo','Comparação de personagens a animais, reforçando seu lado instintivo e bestial.'],
+    ['Patologia social','Retrato de vícios e degenerescência (alcoolismo, prostituição, loucura) como fruto do meio.'],
+    ['Personagem coletivo','O cortiço de Aluísio Azevedo funciona como um organismo vivo — verdadeiro protagonista da obra.'],
+    ['Cientificismo','Literatura tratada quase como experimento de laboratório, sob influência do positivismo e do darwinismo.']
+  ],
+  parnasianismo:[
+    ['Arte pela arte','A poesia deve buscar a perfeição formal, sem função moral, social ou sentimental.'],
+    ['Impassibilidade','Ausência de subjetivismo: o poeta se mantém frio e distante do tema — o oposto do Romantismo.'],
+    ['"Ourives da palavra"','Metáfora de Bilac em "Profissão de Fé": o poeta trabalha o verso como um ourives lapida o ouro.'],
+    ['Soneto','Forma fixa preferida pelos parnasianos, com métrica e rima rigorosamente controladas.'],
+    ['Temas greco-latinos','Recorrência da mitologia clássica e da cultura da Antiguidade como referência estética.']
+  ]
+};
+
+/* ---------------- QUIZ DATA ---------------- */
+const QUIZZES = {
+  romantismo:[
+    {q:'Qual obra é considerada o marco inicial do Romantismo no Brasil?', opts:['Iracema','Suspiros poéticos e saudades','O Cortiço','Memórias Póstumas de Brás Cubas'], correct:1, exp:'Publicada por Gonçalves de Magalhães em 1836, em Paris — considerada o marco inaugural do movimento no Brasil.'},
+    {q:'O verso "Minha terra tem palmeiras" abre qual poema, e é de quem?', opts:['"O Navio Negreiro", de Castro Alves','"Canção do Exílio", de Gonçalves Dias','"Iracema", de José de Alencar','"Lira dos Vinte Anos", de Álvares de Azevedo'], correct:1, exp:'"Canção do Exílio" (1843), de Gonçalves Dias, é o poema símbolo do nacionalismo da 1ª geração romântica.'},
+    {q:'Qual geração romântica ficou conhecida como "mal do século", marcada por pessimismo e fascínio pela morte?', opts:['1ª geração','2ª geração','3ª geração','Nenhuma — isso é característica do Naturalismo'], correct:1, exp:'A 2ª geração, também chamada ultrarromântica ou byroniana, tem em Álvares de Azevedo seu principal nome.'},
+    {q:'Castro Alves, autor de "O Navio Negreiro", pertence a qual geração e levou qual apelido?', opts:['1ª geração — "poeta indianista"','2ª geração — "poeta byroniano"','3ª geração — "poeta dos escravos"','Não pertence ao Romantismo'], correct:2, exp:'Castro Alves é o principal nome da 3ª geração (condoreira), com poesia social e abolicionista.'},
+    {q:'José de Alencar, autor de Iracema e O Guarani, representa principalmente qual vertente?', opts:['Indianista/nacionalista','Ultrarromântica','Condoreira','Naturalista'], correct:0, exp:'Alencar é o grande prosador da vertente indianista/nacionalista da 1ª geração romântica.'}
+  ],
+  realismo:[
+    {q:'O marco inicial do Realismo no Brasil é a publicação de:', opts:['O Cortiço','Memórias Póstumas de Brás Cubas','Iracema','O Ateneu'], correct:1, exp:'Publicado em 1881 por Machado de Assis, rompe com a estética romântica ao usar um narrador morto e irônico.'},
+    {q:'Em Memórias Póstumas de Brás Cubas, quem narra a história?', opts:['Um narrador onisciente tradicional','O próprio Brás Cubas, já morto','Capitu','Um narrador anônimo e neutro'], correct:1, exp:'O "narrador defunto-autor" é a grande inovação: fala livremente, sem medo das convenções sociais, por já estar morto.'},
+    {q:'Um dos temas mais recorrentes no Realismo machadiano é:', opts:['A idealização do amor impossível','O triângulo amoroso e a hipocrisia burguesa','A vida no cortiço','O indianismo heroico'], correct:1, exp:'Machado disseca constantemente o casamento burguês, o ciúme e os interesses escondidos sob discursos de virtude.'},
+    {q:'O Ateneu, romance de memórias sobre a vida em um colégio interno, foi escrito por:', opts:['Machado de Assis','Aluísio Azevedo','Raul Pompeia','Olavo Bilac'], correct:2, exp:'Raul Pompeia publicou O Ateneu em 1888, retratando com desilusão o ambiente de um internato.'},
+    {q:'O que diferencia o Realismo do Romantismo?', opts:['Maior valorização do sentimento pessoal','Busca por objetividade, verossimilhança e crítica social','Idealização da natureza tropical','Ausência total de personagens femininas'], correct:1, exp:'O Realismo troca a idealização romântica por observação crítica e psicológica da sociedade.'}
+  ],
+  naturalismo:[
+    {q:'A obra máxima do Naturalismo brasileiro, ambientada num cortiço carioca, é:', opts:['O Mulato','O Cortiço','Dom Casmurro','Iracema'], correct:1, exp:'O Cortiço (1890), de Aluísio Azevedo, é a obra de referência do movimento no Brasil.'},
+    {q:'O determinismo naturalista, segundo Hippolyte Taine, explica o comportamento humano a partir de:', opts:['Livre-arbítrio e fé religiosa','Raça, meio e momento histórico','Sonhos e imaginação individual','Tradição e orgulho nacional'], correct:1, exp:'A fórmula "raça, meio e momento" de Taine é a base teórica do determinismo naturalista.'},
+    {q:'A técnica de comparar personagens a animais, reforçando seus instintos, chama-se:', opts:['Metalinguagem','Zoomorfismo','Indianismo','Impassibilidade'], correct:1, exp:'O zoomorfismo reforça a ideia naturalista de que o ser humano é também um animal movido por instintos.'},
+    {q:'O Naturalismo foi fortemente influenciado pelo escritor francês:', opts:['Victor Hugo','Émile Zola','Lord Byron','Charles Baudelaire'], correct:1, exp:'Émile Zola e seu "romance experimental" são a principal referência teórica do Naturalismo.'},
+    {q:'Em relação ao Realismo, o Naturalismo costuma ser descrito como:', opts:['Idêntico, apenas outro nome para o mesmo estilo','Mais radical, com foco em instintos, biologia e patologias sociais','Menos interessado em crítica social','Um movimento anterior ao Romantismo'], correct:1, exp:'Os dois nascem próximos, mas o Naturalismo radicaliza a proposta, tratando o humano quase como objeto de estudo biológico.'}
+  ],
+  parnasianismo:[
+    {q:'Os três nomes que formam a "tríade parnasiana" são:', opts:['Machado de Assis, Aluísio Azevedo, José de Alencar','Olavo Bilac, Alberto de Oliveira, Raimundo Correia','Castro Alves, Gonçalves Dias, Casimiro de Abreu','Cruz e Sousa, Augusto dos Anjos, Raul Pompeia'], correct:1, exp:'Bilac, Alberto de Oliveira e Raimundo Correia são os três grandes nomes do Parnasianismo brasileiro.'},
+    {q:'O poema "Profissão de Fé", de Olavo Bilac, é considerado um manifesto porque:', opts:['Defende o fim da poesia escrita','Compara o poeta a um ourives, defendendo o trabalho minucioso com a forma','Narra a vida de um escravo fugitivo','Faz uma crítica direta à monarquia'], correct:1, exp:'Bilac usa a imagem do ourives lapidando ouro para defender o cuidado extremo com a forma do poema.'},
+    {q:'O princípio da "arte pela arte", defendido pelos parnasianos, significa que:', opts:['A poesia deve emocionar o leitor acima de tudo','A poesia deve ter função social e moral explícita','A arte tem valor em si mesma, na busca pela perfeição da forma','A arte deve imitar diretamente a ciência'], correct:2, exp:'Para os parnasianos, o valor do poema está na perfeição formal, não em uma mensagem ou emoção que ele carregue.'},
+    {q:'A forma poética fixa preferida pelos parnasianos, com 14 versos em quartetos e tercetos, é o:', opts:['Haicai','Soneto','Rondó','Verso livre'], correct:1, exp:'O soneto, com sua estrutura rígida, é a forma predileta do Parnasianismo por exigir precisão técnica.'},
+    {q:'Diferente do subjetivismo romântico, os parnasianos buscavam:', opts:['Impassibilidade e objetividade descritiva','Maior exposição de sentimentos pessoais','Nacionalismo indígena e escapismo','Denúncia social direta e panfletária'], correct:0, exp:'A impassibilidade — distância fria do tema — é o oposto direto do "eu" inflamado do Romantismo.'}
+  ]
+};
+
+const MIXED_QUIZ = [
+  {q:'"Determinismo" (raça, meio e momento) é conceito-chave de qual movimento?', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:2, exp:'O determinismo de Taine é a base teórica do Naturalismo.'},
+  {q:'"Arte pela arte" e busca pela perfeição formal são marcas de:', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:3, exp:'O culto à forma perfeita, sem função moral ou sentimental, é a essência do Parnasianismo.'},
+  {q:'O "narrador defunto-autor" é uma invenção de qual movimento?', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:1, exp:'Machado de Assis cria esse recurso em Memórias Póstumas de Brás Cubas, marco do Realismo.'},
+  {q:'A idealização do índio como herói nacional é típica de:', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:0, exp:'O indianismo é uma das marcas centrais da 1ª geração romântica.'},
+  {q:'Aluísio Azevedo, autor de O Cortiço, é o principal nome de qual movimento?', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:2, exp:'O Cortiço é a obra máxima do Naturalismo brasileiro.'},
+  {q:'"Suspiros poéticos e saudades" (1836) marca o início de qual movimento?', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:0, exp:'A obra de Gonçalves de Magalhães inaugura o Romantismo no Brasil.'},
+  {q:'A tríade formada por Bilac, Alberto de Oliveira e Raimundo Correia pertence ao:', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:3, exp:'Esses três nomes são os grandes representantes do Parnasianismo.'},
+  {q:'O adultério burguês, tratado com ironia, é tema recorrente em:', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:1, exp:'Machado de Assis explora o triângulo amoroso burguês como forma de crítica social no Realismo.'},
+  {q:'O zoomorfismo (comparar pessoas a animais) é técnica típica de:', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:2, exp:'O zoomorfismo reforça a visão naturalista do humano como ser instintivo.'},
+  {q:'Castro Alves e o "condoreirismo" pertencem à terceira geração de:', opts:['Romantismo','Realismo','Naturalismo','Parnasianismo'], correct:0, exp:'A 3ª geração romântica, condoreira, tem Castro Alves como principal voz.'}
+];
+
+/* ---------------- STORAGE ---------------- */
+let progress = {};
+async function loadProgress(){
+  try{
+    const r = await window.storage.get('hydrostats-lit-progress');
+    progress = r && r.value ? JSON.parse(r.value) : {};
+  }catch(e){ progress = {}; }
+  renderBadges();
+  renderProgressPanel();
+}
+async function saveProgress(){
+  try{ await window.storage.set('hydrostats-lit-progress', JSON.stringify(progress)); }catch(e){}
+  renderBadges();
+  renderProgressPanel();
+}
+function recordQuizResult(key, score, total){
+  if(!progress[key]) progress[key] = {best:0,total:total,attempts:0};
+  progress[key].attempts += 1;
+  progress[key].total = total;
+  if(score > progress[key].best) progress[key].best = score;
+  saveProgress();
+}
+function recordMixed(score,total){
+  progress.mixed = progress.mixed || {best:0,total:total,attempts:0};
+  progress.mixed.attempts += 1;
+  progress.mixed.total = total;
+  if(score>progress.mixed.best) progress.mixed.best = score;
+  saveProgress();
+}
+
+function renderBadges(){
+  MOVEMENTS.forEach(function(k){
+    const el = document.querySelector('[data-badge="'+k+'"]');
+    if(!el) return;
+    const p = progress[k];
+    if(p && p.attempts>0){
+      el.textContent = p.best + '/' + p.total + ' pts';
+    } else {
+      el.textContent = 'não estudado';
+    }
+  });
+}
+function renderProgressPanel(){
+  const grid = document.getElementById('progress-grid');
+  grid.innerHTML='';
+  MOVEMENTS.forEach(function(k){
+    const p = progress[k];
+    const div = document.createElement('div');
+    div.className='prog-card';
+    div.innerHTML = '<div class="label">'+LABELS[k]+'</div><div class="value">'+(p?p.best+'/'+p.total:'—')+'</div>';
+    grid.appendChild(div);
+  });
+  const mixedDiv = document.createElement('div');
+  mixedDiv.className='prog-card';
+  const m = progress.mixed;
+  mixedDiv.innerHTML = '<div class="label">Revisão geral</div><div class="value">'+(m?m.best+'/'+m.total:'—')+'</div>';
+  grid.appendChild(mixedDiv);
+}
+
+/* ---------------- NAV / SPINES ---------------- */
+document.querySelectorAll('.spine').forEach(function(spine){
+  spine.addEventListener('click', function(){
+    const target = spine.dataset.target;
+    document.querySelectorAll('.spine').forEach(s=>s.classList.remove('active'));
+    spine.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('visible'));
+    document.getElementById('panel-'+target).classList.add('visible');
+    document.getElementById('panel-'+target).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* ---------------- FLASHCARD RENDER ---------------- */
+function buildFlashcards(){
+  MOVEMENTS.forEach(function(key){
+    const grid = document.querySelector('.flash-grid[data-flash="'+key+'"]');
+    if(!grid) return;
+    FLASHCARDS[key].forEach(function(pair){
+      const card = document.createElement('div');
+      card.className='flash';
+      card.innerHTML =
+        '<div class="flash-inner">'+
+          '<div class="flash-face flash-front">'+pair[0]+'<span class="flash-hint">clique</span></div>'+
+          '<div class="flash-face flash-back">'+pair[1]+'</div>'+
+        '</div>';
+      card.addEventListener('click', function(){ card.classList.toggle('flipped'); });
+      grid.appendChild(card);
+    });
+  });
+}
+
+/* ---------------- QUIZ RENDER ---------------- */
+function buildQuiz(container, questions, onFinish){
+  container.innerHTML='';
+  let score = 0;
+  let answered = 0;
+  questions.forEach(function(item, qi){
+    const card = document.createElement('div');
+    card.className='quiz-card';
+    const qEl = document.createElement('div');
+    qEl.className='q';
+    qEl.textContent = (qi+1)+'. '+item.q;
+    card.appendChild(qEl);
+    const optsWrap = document.createElement('div');
+    optsWrap.className='quiz-opts';
+    const explainEl = document.createElement('div');
+    explainEl.className='explain';
+    explainEl.textContent = item.exp;
+    item.opts.forEach(function(optText, oi){
+      const btn = document.createElement('button');
+      btn.className='opt-btn';
+      btn.type='button';
+      btn.textContent = optText;
+      btn.addEventListener('click', function(){
+        if(btn.dataset.answered) return;
+        const allBtns = optsWrap.querySelectorAll('.opt-btn');
+        allBtns.forEach(b=>{b.dataset.answered='1'; b.disabled=true;});
+        if(oi === item.correct){
+          btn.classList.add('correct');
+          score += 1;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+        }
+        explainEl.classList.add('show');
+        answered += 1;
+        if(answered === questions.length && onFinish){ onFinish(score, questions.length); }
+      });
+      optsWrap.appendChild(btn);
+    });
+    card.appendChild(optsWrap);
+    card.appendChild(explainEl);
+    container.appendChild(card);
+  });
+}
+
+function buildAllPerMovementQuizzes(){
+  MOVEMENTS.forEach(function(key){
+    const container = document.querySelector('.quiz-area[data-quiz="'+key+'"]');
+    if(!container) return;
+    const summary = document.createElement('div');
+    summary.className='quiz-summary';
+    const retry = document.createElement('button');
+    retry.className='retry-btn';
+    retry.textContent='Refazer este quiz';
+    const quizHolder = document.createElement('div');
+    container.appendChild(quizHolder);
+    container.appendChild(summary);
+    container.appendChild(retry);
+
+    function run(){
+      summary.classList.remove('show');
+      retry.classList.remove('show');
+      buildQuiz(quizHolder, QUIZZES[key], function(score,total){
+        summary.textContent = 'Resultado: '+score+' de '+total+' — '+
+          (score===total ? 'perfeito! esse capítulo está consolidado.' :
+           score>=total*0.6 ? 'bom domínio, revise os pontos que errou.' :
+           'vale a pena reler o capítulo antes de seguir.');
+        summary.classList.add('show');
+        retry.classList.add('show');
+        recordQuizResult(key, score, total);
+      });
+    }
+    retry.addEventListener('click', run);
+    run();
+  });
+}
+
+/* ---------------- MIXED QUIZ ---------------- */
+document.getElementById('start-mixed').addEventListener('click', function(){
+  const area = document.getElementById('mixed-quiz-area');
+  const shuffled = MIXED_QUIZ.slice().sort(()=>Math.random()-0.5);
+  const summary = document.createElement('div');
+  summary.className='quiz-summary';
+  const holder = document.createElement('div');
+  area.innerHTML='';
+  area.appendChild(holder);
+  area.appendChild(summary);
+  buildQuiz(holder, shuffled, function(score,total){
+    summary.textContent = 'Resultado da revisão geral: '+score+' de '+total+' — '+
+      (score===total ? 'excelente! você distingue bem os quatro movimentos.' :
+       score>=total*0.7 ? 'ótimo domínio geral.' :
+       'volte aos capítulos que ainda geram confusão e tente de novo em um ou dois dias.');
+    summary.classList.add('show');
+    recordMixed(score,total);
+  });
+  area.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+/* ---------------- RESET ---------------- */
+document.getElementById('reset-progress').addEventListener('click', async function(){
+  progress = {};
+  try{ await window.storage.set('hydrostats-lit-progress', JSON.stringify(progress)); }catch(e){}
+  renderBadges();
+  renderProgressPanel();
+});
+
+/* ---------------- INIT ---------------- */
+buildFlashcards();
+buildAllPerMovementQuizzes();
+loadProgress();
+// open first chapter by default
+document.getElementById('spine-romantismo').click();
+
+})();
+</script>
+</body>
+</html>
